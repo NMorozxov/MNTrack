@@ -1,0 +1,179 @@
+    # - bug fixed
+    % - feature changed, added or removed
+    ! - new feature
+    ? - temporary changes
+============================ Version 3.10 ===================================
+ % MNTrack is now uses MNLib library, which is common for all Nicol Morozov
+   software
+ ! Help in unix turbo vision setup
+============================ Version 3.09 ===================================
+ % Unix findfirst/findnext block rewrite
+ ! X Window Setup
+ % Writebody function rewrite
+ ! New Macroses
+   ~HD  - Data and time from message header;
+   ~BK -  Kludges only;
+ ! New error code
+   9 - Error saving configuration
+ % Setup Option UTC is rwemoved, if tou use DOS or OS/2 version you must setup
+   enviroment variable TZ.
+ % Renamed macroses
+   ~F  renamed to ~FN
+   ~O  renamed to ~FA
+   ~3F renamed to ~F3
+   ~T  renamed to ~DN
+   ~D  renamed to ~DA
+   ~3T renamed to ~D3
+   ~S  renamed to ~HS
+   ~B  renamed to ~BC
+   ~I  renamed to ~BT
+ ! New macroses (local time)
+
+  If after L character next character is 0 then leading zero is appended
+  (if necessary)
+
+     ~LS  -  Second
+     ~LM  -  Minute
+     ~LH  -  Hour
+     ~LA  -  Day of month
+     ~LOI -  Month (integer)
+     ~LOT -  Month (text)
+     ~LWI -  Day of week (integer)
+     ~LWT -  Day of week (text)
+     ~LY2 -  Two digit year
+     ~LY4 -  Four digit year
+============================ Version 3.08 ===================================
+ # Fixed MAKEPKT
+============================ Version 3.07 ===================================
+ # Fixed data alignment bug under FreeBSD
+ # Fixed month number in Unix versions
+ # Fixed minth number in PKT files
+ # Fixed trap on JAM base creation
+ ! You can use macroses in statements agruments
+ % UPCASE statement is removed, use NOCASE
+ ! New statements
+   SETFROMZONE <z>
+    Sets "from" zone of message to <z>.
+    ATTENTION : Statement does not change message. If message contatins
+    INTL kludge it is not recommended to use PACK statement on it.
+   SETTOZONE <z>
+    Sets "to" zone of message to <z>.
+    ATTENTION : Statement does not change message. If message contatins
+    INTL kludge it is not recommended to use PACK statement on it.
+   EXISTFILE <f>
+    Returns TRUE if file <f> exists.
+ % Changed routing loop detection algoritm.
+ ! New keyword ADDRESS in mntrnc.ctl
+ ! New macros
+   ~3F - From address 3D
+   ~3T - To address 3D
+============================ Version 3.06 ===================================
+ # Fixed EXEC statement
+ # Fixed INBODY statement with NoCase mode
+ # Year 2000 fix
+ ! New statements
+   STRIPPATH
+    Strip pathes of attached files.
+============================ Version 3.05 ===================================
+ % Changed nodelist compiler configuration file format
+     Format of nodelist compiler configuration file (mntrnc.ctl) :
+     Line can contain one keyword or can begin from symbol ';' 
+     that indicates commant line.
+     KeyWords: 
+     NODELIST <n>
+      Single nodelist
+      <n> - nodelist name
+     NODELISTMASK <n>
+      <n> - mask to seach nodelists (with wildcards)
+     NODELISTMASKNUMERIC <n>
+      The same as NODELISTMASK but only nodelists with numeric extentions 
+      will be compiled
+     NODELISTSEGMENT <z> <s>
+      Nodelist segment
+      <z> - zone or base address
+      <s> - nodelist segment
+ ! New script statements
+   APPENDTOFILE statement is similar to WRITETOFILE statement, but if
+   file already exist it appends template to the end of file.
+   SECOND <a>
+    If second of system time is greater than <a> return TRUE
+   MINUTE <a>
+    If minute of system time is greater than <a> return TRUE
+   HOUR <a>
+    If hour of system time is greater than <a> return TRUE
+ # Fixed buf in /NT version with closing HANDLEs
+ # Now MNTrack will check message existance while processing ~B and ~I 
+   macroses
+ # Fixed Changing current directory bug in /NT setup 
+============================ Version 3.04 ===================================
+ % Changed configuration format, to convert use UPDATE7.EXE
+ # In Name in forward statement is containing spaces it is truncated to first
+   space, now full name is used
+ ! MNTrack now create/check busy flag mntrack.bsy
+ ! New Error code
+    8 - Error loading mntrack.aka.
+ % BOUNCE and HDRBOUNCE statements are removed and EMPTYBOUNCE statement 
+   renamed to BOUNCE
+ % Number of AKA's is now unlimited
+ ! New script statements
+   WRITETOFILE <t> <f>
+    Writes template <t> to file <f>. In <t> template you can use the same
+    macroses as BOUNCE statement
+   JMP <label>
+    Is equal to GOTO <label>
+   NOCASE
+    IS equal to UPCASE
+   EXISTATTACH
+    Checks if files attached to this message exists on disk.
+   WRITETOJAMECHO <jb> "<fn>" <fa> "<tn>" <tpl> "<s>"
+    Writes template <tpl> to echomail conference in JAM format.
+    In <tpl> file you can use same macroses as in BOUNCE statement.
+    <jb> - JAM base
+    <fn> - Name in from "From" field of message
+    <fa> - Address in from "From" field of message
+    <tn> - Name in from "To" field of message
+    <s>  - Message subject
+ ! New command line switches
+   /F <mask> - Scan files using <mask> instead of configuration file mask
+   /S <script> - Execute only one script <script>
+   /U <fromdir> <todir> - Unpack PKT files from direcory <fromdir> to
+      directory <todir>. ATTENTION MNTrack is not setting TRS flag to
+      transit messages, I recomend to do this in your first script.
+ % Now MNTrack can work with out nodelist index
+============================ Version 3.03 ===================================
+ % Changed configuration format, to convert use UPDATE6.EXE
+ ! New Packing Options
+   Clear before PACK    - Here you can select message flags that MNTrack 
+                          will remove from message before Packing it.
+   Set after PACK       - Here you can select message flags that MNTrack
+                          will set on message after Packing it.
+ # Fixed SETARQ Statement
+ # .0 .00 .000 Nodelist extentions is now numeric
+ # Fixed a bug in BOUNCE statements with Address Maintenance
+ % Assignation message number procedure changed
+=========================== Version 3.02.1 ==================================
+ # Bug with finding files in /OS2 and /386 versions
+============================ Version 3.02 ===================================
+ ? In DOS Version of Setup (setup.exe) position indicator in dialogs
+   "script" and "domain" will always show : "0/0"
+ % Changed configuration format, to convert use UPDATE5.EXE
+ ! New /386 (DOS4GW) version of MNTrack
+ ! New macros
+  ~I - Message body with out kludges
+ ! New Script statements
+  EXEC <p>
+   Executes external task, <p> - program name with arguments.
+   Example :
+    EXEC program.exe
+ # Fixed bug with long message lines
+ % Check .msg file existing in some statements
+============================ Version 3.01 ===================================
+ ! New Script commands
+ INFROMNAME <s>
+  Test if the field "From" contains substring <s>
+ INTONAME <s>
+  Test if the field "To" contains substring <s>
+ ! New errorlevel codes :
+  7 - Can't create log file.
+ # Corrected address detection error if MSGID contains Internet address.
+ # Corrected errors with FLAGS kludge.

@@ -1,0 +1,113 @@
+!define BLANK ""
+d:\nicol\track\new\addr.obj : d:\nicol\track\new\addr.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 addr.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt&
+=dos -mf
+
+d:\nicol\track\new\bink.obj : d:\nicol\track\new\bink.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 bink.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt&
+=dos -mf
+
+d:\nicol\track\new\d2afind.obj : d:\nicol\track\new\d2afind.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 d2afind.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s &
+-bt=dos -mf
+
+d:\nicol\track\new\jam.obj : d:\nicol\track\new\jam.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 jam.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt=&
+dos -mf
+
+d:\nicol\track\new\log.obj : d:\nicol\track\new\log.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 log.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt=&
+dos -mf
+
+d:\nicol\track\new\mntcfg.obj : d:\nicol\track\new\mntcfg.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 mntcfg.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -&
+bt=dos -mf
+
+d:\nicol\track\new\mntrack.obj : d:\nicol\track\new\mntrack.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 mntrack.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s &
+-bt=dos -mf
+
+d:\nicol\track\new\mntrq.obj : d:\nicol\track\new\mntrq.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 mntrq.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -b&
+t=dos -mf
+
+d:\nicol\track\new\month.obj : d:\nicol\track\new\month.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 month.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -b&
+t=dos -mf
+
+d:\nicol\track\new\msg.obj : d:\nicol\track\new\msg.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 msg.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt=&
+dos -mf
+
+d:\nicol\track\new\pkt.obj : d:\nicol\track\new\pkt.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 pkt.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt=&
+dos -mf
+
+d:\nicol\track\new\stringop.obj : d:\nicol\track\new\stringop.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 stringop.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s&
+ -bt=dos -mf
+
+d:\nicol\track\new\token.obj : d:\nicol\track\new\token.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 token.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -b&
+t=dos -mf
+
+d:\nicol\track\new\trackmod.obj : d:\nicol\track\new\trackmod.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 trackmod.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s&
+ -bt=dos -mf
+
+d:\nicol\track\new\upkt.obj : d:\nicol\track\new\upkt.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 upkt.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s -bt&
+=dos -mf
+
+d:\nicol\track\new\version.obj : d:\nicol\track\new\version.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 version.c -i=C:\WATCOM\h -w4 -e25 -d__DOS32__ -zq -od -ol -zld -3s &
+-bt=dos -mf
+
+d:\nicol\track\new\mntr386.exe : d:\nicol\track\new\addr.obj d:\nicol\track\&
+new\bink.obj d:\nicol\track\new\d2afind.obj d:\nicol\track\new\jam.obj d:\ni&
+col\track\new\log.obj d:\nicol\track\new\mntcfg.obj d:\nicol\track\new\mntra&
+ck.obj d:\nicol\track\new\mntrq.obj d:\nicol\track\new\month.obj d:\nicol\tr&
+ack\new\msg.obj d:\nicol\track\new\pkt.obj d:\nicol\track\new\stringop.obj d&
+:\nicol\track\new\token.obj d:\nicol\track\new\trackmod.obj d:\nicol\track\n&
+ew\upkt.obj d:\nicol\track\new\version.obj .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ @%write mntr386.lk1 FIL addr.obj,bink.obj,d2afind.obj,jam.obj,log.obj,mntcf&
+g.obj,mntrack.obj,mntrq.obj,month.obj,msg.obj,pkt.obj,stringop.obj,token.obj&
+,trackmod.obj,upkt.obj,version.obj
+ @%append mntr386.lk1 
+ *wlink name mntr386 SYS dos4g op inc op st=32768 op c op maxe=25 op q @mntr&
+386.lk1
+

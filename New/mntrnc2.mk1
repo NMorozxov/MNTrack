@@ -1,0 +1,62 @@
+!define BLANK ""
+d:\nicol\track\new\d2afind.obj : d:\nicol\track\new\d2afind.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 d2afind.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc -&
+zld -3s -bt=os2 -mf
+
+d:\nicol\track\new\mntrnc.obj : d:\nicol\track\new\mntrnc.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 mntrnc.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc -z&
+ld -3s -bt=os2 -mf
+
+d:\nicol\track\new\mntrq.obj : d:\nicol\track\new\mntrq.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 mntrq.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc -zl&
+d -3s -bt=os2 -mf
+
+d:\nicol\track\new\stringop.obj : d:\nicol\track\new\stringop.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 stringop.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc &
+-zld -3s -bt=os2 -mf
+
+d:\nicol\track\new\token.obj : d:\nicol\track\new\token.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 token.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc -zl&
+d -3s -bt=os2 -mf
+
+d:\nicol\track\new\trackmod.obj : d:\nicol\track\new\trackmod.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 trackmod.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc &
+-zld -3s -bt=os2 -mf
+
+d:\nicol\track\new\version.obj : d:\nicol\track\new\version.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 version.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -oc -&
+zld -3s -bt=os2 -mf
+
+d:\nicol\track\new\mntrnc2.exe : d:\nicol\track\new\d2afind.obj d:\nicol\tra&
+ck\new\mntrnc.obj d:\nicol\track\new\mntrq.obj d:\nicol\track\new\stringop.o&
+bj d:\nicol\track\new\token.obj d:\nicol\track\new\trackmod.obj d:\nicol\tra&
+ck\new\version.obj .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ @%write mntrnc2.lk1 FIL d2afind.obj,mntrnc.obj,mntrq.obj,stringop.obj,token&
+.obj,trackmod.obj,version.obj
+ @%append mntrnc2.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b mntrnc2.imp 
+ @%append mntrnc2.lk1 LIBR mntrnc2.imp
+!endif
+ *wlink name mntrnc2 SYS os2v2 op st=16384 op c op maxe=25 op q op symf @mnt&
+rnc2.lk1
+!ifneq BLANK ""
+ rc -i $[: -i C:\WATCOM\h -i C:\WATCOM\h\os2  mntrnc2.exe
+!endif
+

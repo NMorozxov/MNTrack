@@ -1,0 +1,10 @@
+               Licence for using and coping MNTrack netmail tracker
+
+- MNTrack is distributed AS IS.
+- Autor is not responding for any damage that can cause usage of MNTrack
+- You can use MNTrack in FidoNet and other non commercial networks absolutly
+  free and with out any limits.
+- If you want to use MNTrack in commercial networks you must contact autor.
+- You can't make any modifications in MNTrack executables and documentation
+- You can free distribute MNTrack, but you must keep original MNTrack
+  distribution archive.

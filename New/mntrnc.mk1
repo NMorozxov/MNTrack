@@ -1,0 +1,54 @@
+!define BLANK ""
+d:\nicol\track\new\d2afind.obj : d:\nicol\track\new\d2afind.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc d2afind.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos &
+-ml
+
+d:\nicol\track\new\mntrnc.obj : d:\nicol\track\new\mntrnc.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc mntrnc.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos -&
+ml
+
+d:\nicol\track\new\mntrq.obj : d:\nicol\track\new\mntrq.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc mntrq.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos -m&
+l
+
+d:\nicol\track\new\stringop.obj : d:\nicol\track\new\stringop.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc stringop.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos&
+ -ml
+
+d:\nicol\track\new\token.obj : d:\nicol\track\new\token.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc token.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos -m&
+l
+
+d:\nicol\track\new\trackmod.obj : d:\nicol\track\new\trackmod.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc trackmod.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos&
+ -ml
+
+d:\nicol\track\new\version.obj : d:\nicol\track\new\version.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc version.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -zld -3 -bt=dos &
+-ml
+
+d:\nicol\track\new\mntrnc.exe : d:\nicol\track\new\d2afind.obj d:\nicol\trac&
+k\new\mntrnc.obj d:\nicol\track\new\mntrq.obj d:\nicol\track\new\stringop.ob&
+j d:\nicol\track\new\token.obj d:\nicol\track\new\trackmod.obj d:\nicol\trac&
+k\new\version.obj .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ @%write mntrnc.lk1 FIL d2afind.obj,mntrnc.obj,mntrq.obj,stringop.obj,token.&
+obj,trackmod.obj,version.obj
+ @%append mntrnc.lk1 
+ *wlink name mntrnc SYS dos op st=32768 op maxe=25 op q @mntrnc.lk1
+

@@ -1,0 +1,18 @@
+MNTrack for Linux
+
+1) Minimal system requirments
+   Linux kernel 2.4.0+
+   glibc 2.2.0
+   386+
+   Also you need MNTrack documentation and help files package
+
+2) Optional recomended packages
+   running GPM - for mouse in setup
+   qt 3.1.0+ (3.1.2 recomended) - for xsetup 
+
+3) Recomended Linux system, MNTrack is builded on this system
+   Linux kernel 2.4.6
+   glibc 2.2.3
+   GPM 1.19.3
+
+4) Setup is linked staticaly

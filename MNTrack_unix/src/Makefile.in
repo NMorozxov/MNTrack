@@ -1,0 +1,36 @@
+CC		= @CC@
+CFLAGS		= @CFLAGS@
+INCLUDE		= -I. -I.. -I../mnlib
+LIBS            = -L../mnlib -lmn @LIBS_SYSTEM@ -lm
+CFLAGS_ALL	= $(CFLAGS) @CFLAGS_ALL@ @DEFS@ $(INCLUDE)
+
+MNTRACK_OBJS	= addr.o bink.o jam.o log.o cfg.o mntrq.o pkt.o version.o msg.o upkt.o mntrack.o
+MNTRACK_SRCS	= addr.c bink.c jam.c log.c cfg.c mntrq.c pkt.c version.c msg.c upkt.c mntrack.c
+NODEADD_OBJS	= version.o nodeadd.o 
+NODEADD_SRCS	= version.c nodeadd.c 
+MNTRNC_OBJS	= version.o mntrnc.o mntrq.o
+MNTRNC_SRCS	= version.c mntrnc.c mntrq.c
+
+all: mntrack nodeadd mntrnc
+
+.c.o:
+	$(CC) -c $(CFLAGS_ALL) $<
+
+mntrack: $(MNTRACK_OBJS)
+	$(CC) -o mntrack $(MNTRACK_OBJS) $(LIBS)
+
+nodeadd: $(NODEADD_OBJS)
+	$(CC) -o nodeadd $(NODEADD_OBJS) $(LIBS)
+
+mntrnc: $(MNTRNC_OBJS)
+	$(CC) -o mntrnc $(MNTRNC_OBJS) $(LIBS)
+
+clean:
+	rm -f core *.o mntrack nodeadd mntrnc m
+	rm -f mntrack.ndx mntrack.cfg mntrack.msk mntrack.dmn mntrack.aka
+
+distclean: clean
+	rm -f Makefile *~ unix_version.h
+	rm -rf .pcomp
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

@@ -1,0 +1,177 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>TScrForm</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>TScrForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>426</width>
+            <height>91</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>TScrForm</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel8</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>0</y>
+                <width>64</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>0/1</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel9</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>40</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Script</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonIns</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Ins</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonDel</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>70</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Del</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonFirst</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>|&lt;-</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonPrev</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>190</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&lt;-</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonNext</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>250</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>-&gt;</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButtonLast</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>310</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>-&gt;|</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>370</x>
+                <y>60</y>
+                <width>50</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Ok</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>lineEdit10</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>50</x>
+                <y>30</y>
+                <width>370</width>
+                <height>23</height>
+            </rect>
+        </property>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

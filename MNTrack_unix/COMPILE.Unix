@@ -1,0 +1,8 @@
+  You need to make these steps to build MNTrack under UNIX
+ 
+1) Put Track sources in src
+2) Put Setup sources in setup
+3) Edit src/unix_version.h.in
+4) Run autoreconf
+5) Run configure
+6) Run make all

@@ -1,0 +1,39 @@
+/****************************************************************************
+
+
+mntrncn.rc
+
+produced by Borland Resource Workshop
+
+
+*****************************************************************************/
+
+
+#define VERSIONINFO_1	1
+
+VERSIONINFO_1 VERSIONINFO 
+FILEVERSION 1, 0, 0, 0
+PRODUCTVERSION 1, 0, 0, 0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "FileDescription", "MNTrack 3.07 Nodelist Compiler\000"
+   VALUE "FileVersion", "3.07\000\000"
+   VALUE "InternalName", "MNTrack Nodelist Compiler\000"
+   VALUE "LegalCopyright", "Copyright © Nicol Morozov 2:5020/991 1996-98\000\000"
+   VALUE "OriginalFilename", "mntrncn.exe\000"
+  }
+
+ }
+
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 0x409, 1252
+ }
+
+}
+

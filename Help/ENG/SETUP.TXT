@@ -1,0 +1,160 @@
+.topic About=1000
+MNTrack Netmail Tracker {Setup:Cont}
+
+.topic Cont=1111
+
+ General
+  {General Options:GenOpt}
+  {Address Maintenance:Adress}
+  {Path and File Names:FilePath}
+  {Log Options:logopt}
+  {Message Options:meopt}
+  {Quit:Quit}
+ Scripts
+  {Script Options:scropt}
+  {Scripts:Scripts}
+ Packing
+  {Packing Options:paopt}
+  {Domains and outbounds:domains}
+
+.topic index=5555
+
+ {About:About}
+ {Address Maintenance:Adress}
+ {Contents:Cont}
+ {Domains and outbounds:domains}
+ {General Options:GenOpt}
+ {Log Options:logopt}
+ {Message Options:meopt}
+ {Packing Options:paopt}
+ {Path and File Names:FilePath}
+ {Quit:Quit}
+ {Script Options:scropt}
+ {Scripts:Scripts}
+
+.topic GenOpt=1010
+   1.1.1 General Options.
+
+     SysOp Name           - SysOp Full Name.
+
+     UUE Depth            - The number of string contains UUE-code in
+                            message, after which this message is treated like
+                            UUE containing. Value greater than 5 recommended.
+
+.topic Adress=1001
+   1.1.2 Address Maintenance.
+       (In This section you specify your network addresses)
+
+     Main Network Address - Main address, MNTrack will use it in all
+                            cases for witch there is no MATCH ADDRESS.
+
+     For all AKA's you must fill "Zone:Net Match_Address".
+
+     Zone:Net             - Zone:Net for witch MNTrack will use this AKA.
+     Match Address        - Your AKA for this Zone:Net.
+
+     Ú ATTENTION! If for one Zone:Net you have many AKA's you must     ¿
+     À specify only one - from witch MNTrack will answer.              Ù
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+.topic FilePath=1002
+   1.1.3 Path and file names.
+
+     Scan Files           - files witch MNTrack will test (file mask).
+                             Example: c:\net\netmail\*.msg
+     PKT Outbound         - directory, in witch MNTrack will create
+                            PKT-files (MAKEPKT command).
+     Outbound             - directory, in witch file attach is located
+                            if the full path not specified.
+
+.topic Scripts=1003
+   1.2.2 Scripts.
+
+     Here you select scripts witch MNTrack will interpret on message.
+     All scripts will applied to a message in the order witch they are
+     listed in setup. There is no limit for scripts total number.
+     For each script you specify:
+
+     Script               - script file name (look script.doc);
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+.topic Quit=1004
+   1.1.6 Quit.
+
+     Exit from Setup. :)
+
+.topic domains=1012
+    1.3.2 Domains and outbounds.
+
+     Name                 - Domain name with leading symbol "@".
+                             Example: @fidonet.org
+     Outbound             - Bink   Style  Outbound directory for this domain.
+     Default              - Is this domain is default (addresses with unknown
+                            domains is treated like from this domain)
+     Have Main Zone       - If domain have main zone than for this main zone
+                            is the same to domain outbound without any
+                            modifications.
+     Main Zone            - domain main zone (if domain have no main zone
+                            this field is ignored)
+     Zones in domain      - Zones that this domain have (comma separated,
+                            without spaces).
+
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+     For 4D Bink Style Outbound you need:
+      a) Specify one domain (name is not required)
+         fill the outbound field.
+      b) set this domain Default;
+      c) if you need you can specify main zone.
+
+.topic logopt=1014
+   1.1.4 Log Options.
+
+     Log File             - MNTrack log file.
+
+     Next dialog is log detalisation dialog. You select message for
+     output:
+      Error     - Error messages;
+      Warning   - Warning messages;
+      User      - Messages from OUTLOG command;
+      NetMail    - NetMail operations (copy, move, erase, bounce ...);
+      BSO       - Bink Style Outbound operations (commands  PACK, FREQ...);
+      Semaphore - Flag(empty file) creation messages;
+      File      - File creation messages;
+      Debug     - Debug messages;
+      External  - External process executing messages;
+      Unknown   - Unknown messages.
+
+.topic scropt=1016
+   1.2.1 Script Options.
+
+     Keep MNTrack answers - If this message is set ON than MNTrack will not
+                            set KillSent flag on generated messages.
+     After DELETE/MOVE do - After DELETE or MOVE command do:
+                              Nothing             - nothing;
+                              Stop Current Script - stop interpreting current
+                                                    script for current
+                                                    message;
+                              Stop All Scripts    - stop interpreting all
+                                                    scripts for current
+                                                    message.
+
+.topic paopt=1017
+    1.3.1 Packing Options
+
+     Insert INTL kludge   - If This option is set ON, MNTrack when packing
+                            message will insert INTL kludge if message does
+                            not already have it.
+     Clear before PACK    - Here you can select message flags that MNTrack 
+                            will remove from message before Packing it.
+     Set after PACK       - Here you can select message flags that MNTrack
+                            will set on message after Packing it.
+
+.topic meopt=1018
+     Non Standard Flags   - Here you can enumerate flags (comma separated,
+                            without spaces) for witch MNTrack does not
+                            output message:
+                            "Unknown flag ...".

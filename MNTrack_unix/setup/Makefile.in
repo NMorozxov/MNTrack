@@ -1,0 +1,27 @@
+CXX		= @CXX@
+CFLAGS		= @CFLAGS@ -Dfar=
+INCLUDE		= -I. -I.. @TV_INCLUDE@ -I../mnlib -I../src
+LIBS            = @LIBS_TVISION@ @LIBS_SYSTEM@ -L../mnlib -lmn
+CFLAGS_ALL	= $(CFLAGS) @CFLAGS_ALL@ @DEFS@ $(INCLUDE)
+
+OBJS		= cfg.o setup.o ind.o aka.o dmn.o scr.o
+SRCS		= cfg.cc setup.cc ind.cc aka.cc dmn.cc scr.cc
+
+.cc.o:
+	$(CXX) -c $(CFLAGS_ALL) $<
+
+setup: $(OBJS)
+	$(CXX) -static -o setup $(OBJS) $(LIBS)
+	strip setup
+
+all: setup
+
+clean:
+	rm -f core *.o setup
+	rm -f mntrack.ndx mntrack.cfg mntrack.msk mntrack.dmn mntrack.aka
+
+distclean: clean
+	rm -f Makefile *~
+	rm -rf .pcomp
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

@@ -1,0 +1,208 @@
+                         ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+                         º     MNTrack     º
+                         º NetMail Tracker º
+                         ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+
+
+ 1. Setup.
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  1.1 Submenu General
+   1.1.1 General Options.
+
+     SysOp Name           - SysOp Full Name.
+
+     UUE Depth            - The number of string contains UUE-code in
+                            message, after which this message is treated like
+                            UUE containing. Value greater than 5 recommended.
+
+   1.1.2 Address Maintenance.
+       (In This section you specify your network addresses)
+
+     Main Network Address - Main address, MNTrack will use it in all
+                            cases for witch there is no MATCH ADDRESS.
+
+     For all AKA's you must fill "Zone:Net Match_Address".
+
+     Zone:Net             - Zone:Net for witch MNTrack will use this AKA.
+     Match Address        - Your AKA for this Zone:Net.
+
+     Ú ATTENTION! If for one Zone:Net you have many AKA's you must     ¿
+     À specify only one - from witch MNTrack will answer.              Ù
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+   1.1.3 Path and file names.
+
+     Scan Files           - Files witch MNTrack will test (file mask).
+                             Example: c:\net\netmail\*.msg
+     PKT Outbound         - Directory, in witch MNTrack will create
+                            PKT-files (MAKEPKT command).
+     Outbound             - Directory, in witch file attach is located
+                            if the full path not specified.
+
+   1.1.4 Log Options.
+
+     Log File             - MNTrack log file.
+
+     Next dialog is log detalisation dialog. You select message for
+     output:
+      Error     - Error messages;
+      Warning   - Warning messages;
+      User      - Messages from OUTLOG command;
+      NetMail    - NetMail operations (copy, move, erase, bounce ...);
+      BSO       - Bink Style Outbound operations (commands  PACK, FREQ...);
+      Semaphore - Flag(empty file) creation messages;
+      File      - File creation messages;
+      Debug     - Debug messages;
+      External  - External process executing messages;
+      Unknown   - Unknown messages.
+
+   1.1.5 Message Options
+
+     Update lastread      - If this option is set ON, when MNTrack create
+                            message it will modify lastread.
+     Non Standard Flags   - Here you can enumerate flags (comma separated,
+                            without spaces) for witch MNTrack does not
+                            output message:
+                            "Unknown flag ...".
+
+   1.1.6 Quit.
+
+     Exit from Setup. :)
+
+
+  1.2 Submenu Scripts
+
+   1.2.1 Script Options.
+
+     Keep MNTrack answers - If this message is set ON than MNTrack will not
+                            set KillSent flag on generated messages.
+     After DELETE/MOVE do - After DELETE or MOVE command do:
+                              Nothing             - nothing;
+                              Stop Current Script - stop interpreting current
+                                                    script for current
+                                                    message;
+                              Stop All Scripts    - stop interpreting all
+                                                    scripts for current
+                                                    message.
+
+   1.2.2 Scripts.
+
+     Here you select scripts witch MNTrack will interpret on message.
+     All scripts will applied to a message in the order witch they are
+     listed in setup. There is no limit for scripts total number.
+     For each script you specify:
+
+     Script               - script file name (look script.doc);
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+
+   1.3 Submenu Packing
+
+    1.3.1 Packing Options
+
+     Insert INTL kludge   - If This option is set ON, MNTrack when packing
+                            message will insert INTL kludge if message does
+                            not already have it.
+     Clear before PACK    - Here you can select message flags that MNTrack
+                            will remove from message before Packing it.
+     Set after PACK       - Here you can select message flags that MNTrack
+                            will set on message after Packing it.
+
+
+    1.3.2 Domains and outbounds.
+
+     Name                 - Domain name with leading symbol "@".
+                             Example: @fidonet.org
+     Outbound             - Bink   Style  Outbound directory for this domain.
+     Default              - Is this domain is default (addresses with unknown
+                            domains is treated like from this domain)
+     Have Main Zone       - If domain have main zone than for this main zone
+                            is the same to domain outbound without any
+                            modifications.
+     Main Zone            - domain main zone (if domain have no main zone
+                            this field is ignored)
+     Zones in domain      - Zones that this domain have (comma separated,
+                            without spaces).
+
+
+     With buttons on bottom of this dialog you can browse and modify list.
+
+     For 4D Bink Style Outbound you need:
+      a) Specify one domain (name is not required)
+         fill the outbound field.
+      b) set this domain Default;
+      c) if you need you can specify main zone.
+
+
+ 2. Nodelist compilation.
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+     Format of nodelist compiler configuration file (mntrnc.ctl) :
+     Line can contain one keyword or can begin from symbol ';' 
+     that indicates commant line.
+     KeyWords: 
+     NODELIST <n>
+      Single nodelist
+      <n> - nodelist name
+     NODELISTMASK <n>
+      <n> - mask to seach nodelists (with wildcards)
+     NODELISTMASKNUMERIC <n>
+      The same as NODELISTMASK but only nodelists with numeric extentions 
+      will be compiled
+     NODELISTSEGMENT <z> <s>
+      Nodelist segment
+      <z> - zone or base address
+      <s> - nodelist segment
+     ADDRESS <a>
+      Address <a> MNTrack also will threat as listed
+
+     File mntrnc.ctl contains nodelist file names with full path, wildcards
+     are allowed, one name on one line.
+
+     Ä ATTENTION! Don't include pointlists in mntrnc.ctl!!!
+
+     To compile run mntrnc.exe. In resulting index file mntrack.ndx will be
+     created.
+     Command line switches:
+      /H - Help screen.
+      /V - Only numeric nodelist extensions are allowed.
+
+     Using NodeAdd utility you can add address that MNTrack also treated
+     as listed.
+
+
+ 3. NetMail scanning.
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+     For NetMail scanning you must run mntrack.exe, allowed
+     next command line switches :
+      /H - Help screen.
+      /Q - Don't write anything on screen while scanning.
+      /F <mask> - Scan files using <mask> instead of configuration file mask
+      /S <script> - Execute only one script <script>
+      /U <fromdir> <todir> - Unpack PKT files from direcory <fromdir> to
+         directory <todir>. ATTENTION MNTrack is not setting TRS flag to
+         transit messages, I recomend to do this in your first script.
+
+     Errorlevels:
+      0 - No error.
+      1 - Error loading mntrack.cfg.
+      2 - Not enough memory.
+      3 - Unknown command line switch.
+      4 - Error loading mntrack.ndx.
+      5 - Can't open script.
+      6 - Error loading mntrack.dmn.
+      7 - Can't open or create log file.
+      8 - Error loading mntrack.aka.
+      9 - Error saving configuration
+
+ 4. Other.
+ ÄÄÄÄÄÄÄÄÄ
+
+     Special thanks to :
+      Aleksej Chursin (2:5020/991.777) for help in writing documentation
+        and betatesting.
+      Sergey_Salomakhin (2:5020/1104) for spell correctings in documentation.

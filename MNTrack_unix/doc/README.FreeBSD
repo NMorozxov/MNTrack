@@ -1,0 +1,15 @@
+MNTrack for FreeBSD
+
+1) Minimal system requirments
+   FreeBSD 4.0+
+   386+
+   Also you need MNTrack documentation and help files package
+
+2) Optional recomended packages
+   running moused daemon - for mouse in setup
+   qt 3.1.0+ (3.1.2 recomended) - for xsetup 
+
+3) Recomended FreeBSD system, MNTrack is builded on this system
+   FreeBSD 4.7-STABLE
+
+4) Setup is linked staticaly

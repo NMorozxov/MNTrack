@@ -1,0 +1,481 @@
+                      ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+                      º     MNTrack     º
+                      º NetMail Tracker º
+                      ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+                      º Script commands º
+                      ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+
+
+    Script is a sequence of lines. In one line can be a one statement, label
+or comment.
+
+
+I. Global definitions.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+   "Statement" ("Command")    - Fixed reserved MNTrack word, that forces 
+                                MNTrack to do something, check condition, 
+                                set working mode;
+   "Arguments" ("Parameters") - a side condition (value), that needed
+                                to statement execution;
+                                 Example: Statement Parametr#1 Paramentr#2 ...
+   "Label"                    - A marked place in script, that have unique
+                                name. On statement "goto label AAA" script
+                                begins executing from line next to AAA.
+                                Label - word with out spaces, beginning with
+                                ":" symbol;
+   "Comment"                  - A voluntary sequence of ASCII symbols,
+                                beginning with ";" symbol. It does nothing
+                                for script execution.
+   "Macros"                   - Fixed reserved MNTrack word, begining with
+                                ";" symbol.
+
+II. Notes.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+    Statements names is not case sensitive, statements arguments is case
+sensitive by default, a NOCASE statement makes arguments no case sensitive,
+a REALCASE statement makes arguments case sensitive.
+    Break mode is set by default, BusySystemFlags mode by default is not set,
+meaning of this modes you can read some later in this document.
+    In corner bracket is specified required arguments, in square not
+required. If a statement have more than one not required parameter, and if 
+a first parameter is missing the next parameters must be missing too.
+    You can use macroses in statements arguments, exept ~B macroses.
+    If you use DOS or OS/2 version you must setup enviroment variable TZ.
+
+III. Script composition.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+1. System symbols.
+
+    ;
+      comment line beginning
+    :
+      label beginning
+
+    If before statement you place symbol:
+      -
+      &
+      |
+      ^
+      than statement interprets the next way:
+
+    -
+      the returning value of a statement inverts.
+       Example: statement -RCV test if message have no RCV flag.
+
+    &
+      the returning value is gets by means of logical "AND" between returning
+      value and value returned by previous statement.
+
+    |
+      the returning value is gets by means of logical "OR" between returning
+      value and value returned by previous statement.
+
+
+    ^
+      the returning value is gets by means of exclusive "OR" between returning
+      value and value returned by previous statement.
+
+
+    Ú ATTENTION! Between symbols  -,&,|,^  and statement name there       ¿
+    À must be no spaces                                                   Ù
+
+    Ú ATTENTION! There can be a combinations , for example statement      ¿
+    ³ &-RCV is correct. Order of execution is not depending of the symbol ³
+    ³ order first inversion and after logical operation. For example      ³
+    À statement &-RCV is equal to -&RCV and means "And have no RCV flag". Ù     Ù
+
+      Example (script):
+       nobreak
+       TFS
+       |KFS
+       jne qui
+       delete
+       :qui
+       quit
+
+      Erases a message if it have TRS of KFS flag.
+
+
+2. Macroses.
+
+2.1 Common.
+
+     ~V  -  MNTrack version;
+     ~N  -  SysOp name;
+     ~~  -  Symbol "~"
+
+2.2 Message header.
+
+     ~FN -  Full name from "From" field of original message;
+     ~FA -  Address of sender(From);
+     ~F3 -  Address of sender(From) 3D;
+     ~DN -  Full name from "To" filed of original message;
+     ~DA -  Destination address of original message;
+     ~D3 -  Destination address of original message 3D;
+     ~HD - Data and time from message header;
+     ~HS - Subject from message header;
+
+2.3 Message boby.
+
+     ~BC -  Original message body;
+     ~BT -  Original message body with out kludges;
+     ~BK -  Kludges only;
+
+2.4 Local time
+
+  If after L character next character is 0 then leading zero is appended
+  (if necessary)
+
+     ~LS  -  Second
+     ~LM  -  Minute
+     ~LH  -  Hour
+     ~LA  -  Day of month
+     ~LOI -  Month (integer)
+     ~LOT -  Month (text)
+     ~LWI -  Day of week (integer)
+     ~LWT -  Day of week (text)
+     ~LY2 -  Two digit year
+     ~LY4 -  Four digit year
+
+
+3. Common statements.
+
+ BREAK
+  Set BREAK mode (look 3 part), by default BREAK mode is on.
+ NOBREAK
+  Unset BREAK mode.
+ NOCASE
+  Set no case sensitive mode for statements arguments.
+ REALCASE
+  Set case sensitive mode for statements arguments. By default is
+  case sensitive mode.
+ QUIT
+  Stop script execution.
+ JMP <l>
+ GOTO <l>
+  Begin script execution from label <l>
+  Label - sequence of ASCII symbols with out spaces beginning with ":" symbol.
+  In GOTO statement you must no write ":" symbol. Case sensitive is dependent
+  of NOCASE and REALCASE commands. Statements JMP and GOTO are equal.
+   Example:
+     GOTO Label
+     :Label
+ JE <l>
+  Like GOTO statement, but it works only if last statement returns TRUE.
+ JNE <l>
+  Like GOTO statement, but it works only if last statement returns FALSE.
+
+4. Conditions check commands.
+
+        If statement of this group returns FALSE (if "not equal") and BREAK
+   mode is on interpretation of script is stopped. If check is succeeded
+   than statement returns TRUE else FALSE.
+
+ EXISTATTACH
+  Checks if files attached to this message exists on disk.
+ BUSYSYSTEMCHECK <a>
+  Check for Bink Style busy-flags for <a> address.
+ SUBJ <s>
+  Check if "Subject" field is equal to <s>.
+ INSUBJ <s>
+  Check if "Subject" field contains substring <s>.
+ INFROMNAME <s>
+  Test if the field "From" contains substring <s>
+ INTONAME <s>
+  Test if the field "To" contains substring <s>
+ FROMNAME <s>
+  Check if "From" field contains substring <s>.
+ TONAME <s>
+  Check if "To" field contains substring <s>.
+ FROMADR <s> [[s1] [s2] ...]
+  Check if from address is equal to one of [s1],[s2] etc. addresses. If
+  equal to one of them returns TRUE else FALSE.
+ FROMADR3D <s> [[s1] [s2] ...]
+  Check if zone, net, node fields of from address is equal to one of [s1],[s2]
+  etc. addresses. If equal to one of them returns TRUE else FALSE.
+ TOADR <s> [[s1] [s2] ...]
+  Check if to address is equal to one of [s1],[s2] etc. addresses. If
+  equal to one of them returns TRUE else FALSE.
+ TOADR3D <s> [[s1] [s2] ...]
+  Check if Zone, Net, Node fields of to address is equal to one of [s1],[s2]
+  etc. addresses. If equal to one of them returns TRUE else FALSE.
+ TOZONE <s> [[s1] [s2] ...]
+  Check if Zone field of to address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ TONET <s> [[s1] [s2] ...]
+  Check if Net field of to address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ TONODE <s> [[s1] [s2] ...]
+  Check if Node field of to address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ TOPOINT <s> [[s1] [s2] ...]
+  Check if Point field of to address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ FROMZONE <s> [[s1] [s2] ...]
+  Check if Zone field of from address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ FROMNET <s> [[s1] [s2] ...]
+  Check if Net field of from address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ FROMNODE <s> [[s1] [s2] ...]
+  Check if Node field of from address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ FROMPOINT <s> [[s1] [s2] ...]
+  Check if Point field of from address is equal to one of [s1],[s2] etc.
+  If equal to one of them returns TRUE else FALSE.
+ LOOP
+  Check if message already make routing loop.
+ DUPE
+  Check if there is message with same MSGID (duplicate message).
+ INTL
+  Check if message contains INTL kludge.
+ MSGID
+  Check if message contains MSGID kludge.
+ VIA
+  Check if message contains Via kludge.
+ TOLISTED
+  Check if To Address is listed in nodelists. If Node is listed all
+  his points are also listed.
+ FROMLISTED
+  Check if To Address is listed in nodelists. If Node is listed all
+  his points are also listed.
+ EMPTY
+  Check if message is empty (all lines - kludges).
+ UUE
+  Check if message contains UUE-code.
+ INBODY <s>
+  Check if message body contains substring <s>.
+ MSGSIZE <l>
+  If size of message is less than <l> bytes, returns TRUE, else FALSE.
+ SECOND <a>
+  If second of system time is greater than <a> return TRUE
+ MINUTE <a>
+  If minute of system time is greater than <a> return TRUE
+ HOUR <a>
+  If hour of system time is greater than <a> return TRUE
+ EXISTFILE <f>
+  Returns TRUE if file <f> exists.
+
+ 4.1. Check for flag presence:
+
+  PVT check for Private flag
+  CRA check for Crash flag
+  RCV check for Recd flag
+  SNT check for Sent flag
+  ATT check for Attach flag
+  TRS check for InTransit flag
+  ORP check for Orphan flag
+  K/S check for KillSent flag
+  LOC check for Local flag
+  HLD check for HoldForPickup flag
+  FRQ check for FileRequest flag
+  RRQ check for ReturnReceiptRequest flag
+  RRC check for IsReturnReceipt flag
+  ARQ check for AuditRequest flag
+  URQ check for FileUpdateRequest flag
+  LOK check for MessageLocked flag
+  CFM check for Confirmation flag
+  XMA check for XMail flag
+  ZON check for ViaZoneGate flag
+  HUB check for ViaHUB/HOST flag
+  DIR check for Direct flag
+  IMM check for Immediate flag
+  KFS check for KillFileSent flag
+  TFS check for TruncateFileSent flag
+  A/S check for Archive/Sent flag
+
+
+5. Action statements.
+
+  MOVE <d>
+   Move message in to <d> directory.
+  COPY <d>
+   Copy message in to <d> directory.
+  SEMAPHORE <s>
+   Create flag (empty file). You must specify name with full path.
+  DELETE
+   Erase message.
+  DELETEATTACH
+   Erases all attached to message files, keeping message.
+  EXEC <p>
+   Executes external task, <p> - program name with arguments.
+   Example :
+    EXEC program.exe
+  BOUNCE <f>
+   Returns message to sender, created message contains body of file <f>,
+   header and text of original message. Statement keep old message.
+    In body of <f> file you can use macroses.
+
+      Example:
+        After "bounce a.tpl" statement,  if a.tpl contains
+        only string: "This message is bounced" you can see a result:
+
+        New Message Header:
+          From: MNTrack       2:5020/158.34
+          To  : Xxxx Yyyy     2:5020/A.B
+          Subj: Bounced Message
+
+        Body of created message:
+          This message is bounced
+
+  FORWARD <a> <t> [<n>]
+   Forwards message to address <a> and name <n>. If <n> is missing, than
+   assign to name "SysOp".  Body of <t> file inserts before old message body.
+   In file <t> you can use macroses.
+   MNTrack distribution includes FWD.TPL file, it is a example of
+   of <f> file, if MNTrack can't find <f> file it try to use FWD.TPL file.
+
+  MAKEMSG "<fn>" <fa> "<tn>" <ta> "<s>" <t>
+   Creates a message from <fn> name and <fa> address to <tn> name and <ta>
+   address, in "Subject" field MNTrack will place <s> string, and message
+   body is body of <t> file. In <t> file you can use macroses.
+    Example:
+     MAKEMSG "MNTrack" 2:5020/991 "Nicol" 2:5020/991 "Notify" notify.tpl
+
+  SETSUBJ <s>
+   Replace "Subject" filed with <s> string.
+
+  SETFROMNAME <s>
+   Replace the Sender name with <s> string.
+
+  SETTONAME <s>
+   Replace the Destination name with <s> string.
+
+  SETFROMZONE <z>
+   Sets "from" zone of message to <z>.
+   ATTENTION : Statement does not change message. If message contatins
+   INTL kludge it is not recommended to use PACK statement on it.
+  SETTOZONE <z>
+   Sets "to" zone of message to <z>.
+   ATTENTION : Statement does not change message. If message contatins
+   INTL kludge it is not recommended to use PACK statement on it.
+
+  MAKEPKT "<fn>" <fa> "<tn>" <ta> "<s>" <e> <t> <pt> [pf] [pp]
+   Creates  PKT-file in directory, specified in Setup like "PKT Outbound",
+   where:
+   <pt> -  address "To" in PKT header;
+   [pf] -  address "From" in PKT header;
+   [pp] -  PKT password.
+   In  PKT-file will be one message to <e> echo from <fn> name and <fa>
+   address from <tn> name and <ta> address, with <s> subject, in message
+   body MNTrack will place body of <t> file.
+   In <t> file you can use macroses.
+   For NetMail PKT you must fill <e> field like NETMAIL.
+
+  WRITETOFILE <t> <f>
+   Writes template <t> to file <f>. In <t> template you can use macroses.
+
+  APPENDTOFILE <t> <f> 
+   APPENDTOFILE statement is similar to WRITETOFILE statement, but if
+   file already exist it appends template to the end of file.
+
+  WRITETOJAMECHO <jb> "<fn>" <fa> "<tn>" <tpl> "<s>"
+   Writes template <tpl> to echomail conference in JAM format.
+   In <tpl> file you can use macroses.
+   <jb> - JAM base
+   <fn> - Name in from "From" field of message
+   <fa> - Address in from "From" field of message
+   <tn> - Name in from "To" field of message
+   <s>  - Message subject
+
+  STRIPPATH
+   Strip pathes of attached files.
+
+
+ 5.1. Statements for  set/remove flags.
+
+  SETPVT set Private flag
+  CLEARPVT unset Private flag
+  SETCRA set Crash flag
+  CLEARCRA unset Crash flag
+  SETRCV set Recd flag
+  CLEARRCV unset Recd flag
+  SETSNT set Sent flag
+  CLEARSNT unset Sent flag
+  SETATT set Attach flag
+  CLEARATT unset Attach flag
+  SETTRS set InTransit flag
+  CLEARTRS unset InTransit flag
+  SETORP set Orphan flag
+  CLEARORP unset Orphan flag
+  SETK/S set KillSent flag
+  CLEARK/S unset KillSent flag
+  SETLOC set Local flag
+  CLEARLOC unset Local flag
+  SETHLD set HoldForPickup flag
+  CLEARHLD unset HoldForPickup flag
+  SETFRQ set FileRequest flag
+  CLEARFRQ unset FileRequest flag
+  SETRRQ set ReturnReceiptRequest flag
+  CLEARRRQ unset ReturnReceiptRequest flag
+  SETRRC set IsReturnReceipt flag
+  CLEARRRC unset IsReturnReceipt flag
+  SETARQ set AuditRequest flag
+  CLEARARQ unset AuditRequest flag
+  SETURQ set FileUpdateRequest flag
+  CLEARURQ unset FileUpdateRequest flag
+
+6. Statements to work with Binkley Style Outbound.
+
+  PACK [f] [t] [r] [p]
+   Packs mail message in to  .?UT-file. Statement keeps message.
+   Parameters not required:
+    [f] - Attach type.
+          o - Normal (!)
+          c - Crash
+          d - Direct
+          h - Hold
+          i - Immediate
+          By default - Normal;
+    [t]  - Address to place in "To" field of creating ?UT-file (by default
+           address from "To" field of original message);
+    [r]  - Address to place in "From" field of creating ?UT-file (by default
+           address from "From" field of original message);
+    [p]  - password.
+  PACKPKT [f] [t] [r] [p]
+   Only one difference from PACK statement, is that PACKPKT creates PKT-file
+   and attach it (creates .?LO file).
+  ATTACH [f] [a] [t]
+   Creates Bink Style Attach files specified in "Subject" filed:
+    [f] - Attach type
+          f - Normal (!)
+          c - Crash
+          d - Direct
+          h - Hold
+          i - Immediate
+    [a] - Destination Address , by default address from "To" field;
+    [t] - Extended attribute
+          n - attribute missing
+          k - Kill File After Sent
+          t - Truncate File After Sent
+          If missing - using message flags KFS and TFS.
+  FREQ [f]
+   Creates Bink Style file request of file specified in "Subject" filed of
+   message:
+    [f] - Destination address. If missing - address from "To" filed.
+  BUSYSYSTEMSET <a>
+   Creates Bink Style Busy Flag to <a> address.
+  BUSYSYSTEMUNSET <a>
+   Removes all Bink Style Busy Flags from address <a>.
+  BUSYSYSTEMFLAGS
+   Set BusySystemFlags mode (by default not set).  If mode is set ON,
+   than PACK and PACKPKT statements check/create  Bink Style Busy System
+   Flags to destination address, after finish removes created flags.
+  NOBUSYSYSTEMFLAGS
+   Unset BusySystemFlags mode.
+
+7. Statements to operate with log-file.
+
+  OUTLOG <s>
+   Writes to log string <s>.
+    Example (write to log "Hello World !"):
+      OUTLOG Hello World !
+  LOGSTART <s>
+   Appends to start of next log message string <s>.
+  LOGEND <s>
+   Appends to the of next log message string <s>.
+  LOGDROP
+   Removes LOGSTART and LOGEND effect.

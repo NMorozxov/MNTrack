@@ -1,0 +1,14 @@
+#define hcAbout                 1000
+#define hcAdress                1001
+#define hcCont                  1111
+#define hcFilePath              1002
+#define hcGenOpt                1010
+#define hcQuit                  1004
+#define hcScripts               1003
+#define hcdomains               1012
+#define hcindex                 5555
+#define hclogopt                1014
+#define hcmeopt                 1018
+#define hcpaopt                 1017
+#define hcscropt                1016
+

@@ -1,0 +1,48 @@
+!define BLANK ""
+d:\nicol\track\new\d2afind.obj : d:\nicol\track\new\d2afind.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 d2afind.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -3s -&
+bt=os2 -mf
+
+d:\nicol\track\new\nodeadd.obj : d:\nicol\track\new\nodeadd.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 nodeadd.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -3s -&
+bt=os2 -mf
+
+d:\nicol\track\new\stringop.obj : d:\nicol\track\new\stringop.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 stringop.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -3s &
+-bt=os2 -mf
+
+d:\nicol\track\new\trackmod.obj : d:\nicol\track\new\trackmod.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 trackmod.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -3s &
+-bt=os2 -mf
+
+d:\nicol\track\new\version.obj : d:\nicol\track\new\version.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc386 version.c -i=C:\WATCOM\h;C:\WATCOM\h\os2 -w4 -e25 -zq -od -ol -3s -&
+bt=os2 -mf
+
+d:\nicol\track\new\nodeadd2.exe : d:\nicol\track\new\d2afind.obj d:\nicol\tr&
+ack\new\nodeadd.obj d:\nicol\track\new\stringop.obj d:\nicol\track\new\track&
+mod.obj d:\nicol\track\new\version.obj .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ @%write nodeadd2.lk1 FIL d2afind.obj,nodeadd.obj,stringop.obj,trackmod.obj,&
+version.obj
+ @%append nodeadd2.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b nodeadd2.imp 
+ @%append nodeadd2.lk1 LIBR nodeadd2.imp
+!endif
+ *wlink name nodeadd2 SYS os2v2 op maxe=25 op q op symf @nodeadd2.lk1
+!ifneq BLANK ""
+ rc -i $[: -i C:\WATCOM\h -i C:\WATCOM\h\os2  nodeadd2.exe
+!endif
+

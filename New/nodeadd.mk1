@@ -1,0 +1,41 @@
+!define BLANK ""
+d:\nicol\track\new\d2afind.obj : d:\nicol\track\new\d2afind.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc d2afind.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -os -ol -3 -bt=d&
+os -ml
+
+d:\nicol\track\new\nodeadd.obj : d:\nicol\track\new\nodeadd.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc nodeadd.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -os -ol -3 -bt=d&
+os -ml
+
+d:\nicol\track\new\stringop.obj : d:\nicol\track\new\stringop.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc stringop.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -os -ol -3 -bt=&
+dos -ml
+
+d:\nicol\track\new\trackmod.obj : d:\nicol\track\new\trackmod.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc trackmod.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -os -ol -3 -bt=&
+dos -ml
+
+d:\nicol\track\new\version.obj : d:\nicol\track\new\version.c .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ *wcc version.c -i=C:\WATCOM\h -w4 -e25 -d__MSDOS__ -zq -od -os -ol -3 -bt=d&
+os -ml
+
+d:\nicol\track\new\nodeadd.exe : d:\nicol\track\new\d2afind.obj d:\nicol\tra&
+ck\new\nodeadd.obj d:\nicol\track\new\stringop.obj d:\nicol\track\new\trackm&
+od.obj d:\nicol\track\new\version.obj .AUTODEPEND
+ @d:
+ cd d:\nicol\track\new
+ @%write nodeadd.lk1 FIL d2afind.obj,nodeadd.obj,stringop.obj,trackmod.obj,v&
+ersion.obj
+ @%append nodeadd.lk1 
+ *wlink name nodeadd SYS dos op maxe=25 op q op symf @nodeadd.lk1
+

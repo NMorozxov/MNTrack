@@ -1,0 +1,33 @@
+- case sensetive search
+- dupe base
+- const LOG_...
+- взраст mntrack.bsy
+- rewite message, set fromadr ...
+- if link is busy (wait,quit ...)
+- restore cleaned flags
+- default modes (NOCASE etc)
+- toupper fix
+- переменныи
+- squish
+- time of message
+- file time of message
+- K/s flags in flags kludge
+- set flags from flags kludge
+- end of lines in WriteBody
+- invalidate in WriteBody
+- путь к конфигам из argv[0]
+- unpack with passwords
+- принадлежность к HUB 
+- случайное имя у PKT при packpkt
+- Statements
+   include
+   call
+   return
+   packtofilebox
+- Date and time
+- adr like
+- изменять лог левел из командной строки ключом
+- баунсенные письма класть в другой каталог
+- писать в отладочную информации аргументы и имя файла скрипта
+- Ctrl-C
+

@@ -1,0 +1,1 @@
+nodelistmask c:\fido\nodelist\nodelist.*

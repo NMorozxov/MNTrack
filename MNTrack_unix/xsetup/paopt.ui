@@ -1,0 +1,356 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>PackOptForm</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>Form1</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>400</width>
+            <height>231</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>186</width>
+                <height>162</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>GroupBoxPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Sunken</enum>
+        </property>
+        <property name="title">
+            <string>Clear Before PACK</string>
+        </property>
+        <grid>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QCheckBox" row="0" column="0">
+                <property name="name">
+                    <cstring>checkBox2</cstring>
+                </property>
+                <property name="text">
+                    <string>PVT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="0">
+                <property name="name">
+                    <cstring>checkBox3</cstring>
+                </property>
+                <property name="text">
+                    <string>CRA</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="0">
+                <property name="name">
+                    <cstring>checkBox4</cstring>
+                </property>
+                <property name="text">
+                    <string>RCV</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="0">
+                <property name="name">
+                    <cstring>checkBox5</cstring>
+                </property>
+                <property name="text">
+                    <string>SNT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="0">
+                <property name="name">
+                    <cstring>checkBox6</cstring>
+                </property>
+                <property name="text">
+                    <string>ATT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="0" column="1">
+                <property name="name">
+                    <cstring>checkBox7</cstring>
+                </property>
+                <property name="text">
+                    <string>TRS</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="1">
+                <property name="name">
+                    <cstring>checkBox8</cstring>
+                </property>
+                <property name="text">
+                    <string>ORP</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="1">
+                <property name="name">
+                    <cstring>checkBox9</cstring>
+                </property>
+                <property name="text">
+                    <string>K/S</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="1">
+                <property name="name">
+                    <cstring>checkBox10</cstring>
+                </property>
+                <property name="text">
+                    <string>LOC</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="1">
+                <property name="name">
+                    <cstring>checkBox11</cstring>
+                </property>
+                <property name="text">
+                    <string>HLD</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="0" column="2">
+                <property name="name">
+                    <cstring>checkBox12</cstring>
+                </property>
+                <property name="text">
+                    <string>FRQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="2">
+                <property name="name">
+                    <cstring>checkBox13</cstring>
+                </property>
+                <property name="text">
+                    <string>RRQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="2">
+                <property name="name">
+                    <cstring>checkBox14</cstring>
+                </property>
+                <property name="text">
+                    <string>RRC</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="2">
+                <property name="name">
+                    <cstring>checkBox15</cstring>
+                </property>
+                <property name="text">
+                    <string>ARQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="2">
+                <property name="name">
+                    <cstring>checkBox16</cstring>
+                </property>
+                <property name="text">
+                    <string>URQ</string>
+                </property>
+            </widget>
+        </grid>
+    </widget>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup2_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>200</x>
+                <y>30</y>
+                <width>186</width>
+                <height>162</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Set After PACK</string>
+        </property>
+        <grid>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QCheckBox" row="0" column="0">
+                <property name="name">
+                    <cstring>checkBox17</cstring>
+                </property>
+                <property name="text">
+                    <string>PVT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="0">
+                <property name="name">
+                    <cstring>checkBox18</cstring>
+                </property>
+                <property name="text">
+                    <string>CRA</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="0">
+                <property name="name">
+                    <cstring>checkBox19</cstring>
+                </property>
+                <property name="text">
+                    <string>RCV</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="0">
+                <property name="name">
+                    <cstring>checkBox20</cstring>
+                </property>
+                <property name="text">
+                    <string>SNT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="0">
+                <property name="name">
+                    <cstring>checkBox21</cstring>
+                </property>
+                <property name="text">
+                    <string>ATT</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="0" column="1">
+                <property name="name">
+                    <cstring>checkBox22</cstring>
+                </property>
+                <property name="text">
+                    <string>TRS</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="1">
+                <property name="name">
+                    <cstring>checkBox23</cstring>
+                </property>
+                <property name="text">
+                    <string>ORP</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="1">
+                <property name="name">
+                    <cstring>checkBox24</cstring>
+                </property>
+                <property name="text">
+                    <string>K/S</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="1">
+                <property name="name">
+                    <cstring>checkBox25</cstring>
+                </property>
+                <property name="text">
+                    <string>LOC</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="1">
+                <property name="name">
+                    <cstring>checkBox26</cstring>
+                </property>
+                <property name="text">
+                    <string>HLD</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="0" column="2">
+                <property name="name">
+                    <cstring>checkBox27</cstring>
+                </property>
+                <property name="text">
+                    <string>FRQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="1" column="2">
+                <property name="name">
+                    <cstring>checkBox28</cstring>
+                </property>
+                <property name="text">
+                    <string>RRQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="2" column="2">
+                <property name="name">
+                    <cstring>checkBox29</cstring>
+                </property>
+                <property name="text">
+                    <string>RRC</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="3" column="2">
+                <property name="name">
+                    <cstring>checkBox30</cstring>
+                </property>
+                <property name="text">
+                    <string>ARQ</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox" row="4" column="2">
+                <property name="name">
+                    <cstring>checkBox31</cstring>
+                </property>
+                <property name="text">
+                    <string>URQ</string>
+                </property>
+            </widget>
+        </grid>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>checkBox1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>0</y>
+                <width>130</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Insert INTL Kludge</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>100</x>
+                <y>200</y>
+                <width>87</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Ok</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>210</x>
+                <y>200</y>
+                <width>87</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

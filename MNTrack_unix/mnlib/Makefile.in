@@ -1,0 +1,40 @@
+CC		= @CC@
+CFLAGS		= @CFLAGS@
+INCLUDE		= -I. -I.. -I../src
+CFLAGS_ALL	= $(CFLAGS) @CFLAGS_ALL@ @DEFS@ $(INCLUDE)
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+libdir		= @libdir@
+includedir	= @includedir@
+mnlib_shared	= libmn.so.1
+
+OBJS		= dosfind.o scandir.o checks.o stringop.o token.o trackmod.o month.o round.o
+SRCS		= dosfind.c scandir.c checks.c stringop.c token.c trackmod.c month.c round.c
+
+.c.o:
+	$(CC) -c $(CFLAGS_ALL) $<
+
+all: ${mnlib_shared} libmn.a
+
+libmn.a: $(OBJS)
+	rm -f libmn.a;ar cq libmn.a $(OBJS)
+
+${mnlib_shared}: $(OBJS)
+	rm -f ${mnlib_shared} libmn.so 
+	ld -shared -soname=${mnlib_shared} -o ${mnlib_shared} $(OBJS)
+	ln -s ${mnlib_shared} libmn.so 
+
+install: all
+	cp libmn.a ${libdir}
+	cp ${mnlib_shared} ${libdir}
+	cp libmn.so ${libdir}
+	cp mnlib.h ${includedir}
+
+clean:
+	rm -f core *.o *.a *.so.* *.so
+
+distclean: clean
+	rm -f Makefile *~
+	rm -rf .pcomp
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

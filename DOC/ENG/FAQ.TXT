@@ -1,0 +1,15 @@
+Q: How I can contact author?
+A: FIDO Net  : 2:5020/991
+   E-Mail    : nicol@windoms.sitek.net
+
+Q: Where I can get the last version of MNTrack?
+A: 1) FREQ MNTRACK from 2:5020/991 01:30-05:00 MSK
+   2) FREQ MNTRACK from 2:5020/3000 CM
+   3) http://mntrack.da.ru/
+   4) http://members.tripod.com/~mntrack 
+
+Q: Is there a support echo?
+A: Yes, MNTRACK.SUPPORT.
+
+Q: Can I obtain MNTrack from a Fileecho ?
+A: Yes, from AFTNMISC Fileecho.

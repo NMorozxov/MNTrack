@@ -1,0 +1,15 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+COMPRESS=12 Hall Zeck
+ERRORLOG=.\setun.log
+LCID=0x409 0x0 0x0 ; English (United States)
+REPORT=Yes
+TITLE=MNTrack Setup
+HLP=.\setupn.hlp
+
+[FILES]
+.\setupn.rtf
+
+[MAP]
+#include .\set_hlp.h

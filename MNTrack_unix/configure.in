@@ -1,0 +1,67 @@
+dnl Process this file with autoconf to produce a configure script.
+
+dnl define(an_dirname, `echo "$1"|sed "s%/${lbrace}^/${rbrace}${lbrace}^/${rbrace}*$%%"` )
+
+AC_INIT(src/addr.c)
+AC_CONFIG_HEADER(config.h)
+AC_CANONICAL_HOST
+
+dnl Checks for programs.
+AC_CHECK_PROGS(CC, gcc cc icc)
+AC_CHECK_PROGS(CXX, g++ c++ CC xlC)
+AC_PATH_PROG(MOC, moc , /bin /usr/bin /usr/local/bin $QTDIR/bin /usr/local/qt/bin /opt/qt/bin /opt/kde/bin /usr/X11R6/bin)
+
+dnl configure variables
+CFLAGS_ALL="-DUNIX"
+AC_SUBST(CC)
+AC_SUBST(CXX)
+AC_SUBST(MOC)
+AC_SUBST(CFLAGS_ALL)
+AC_SUBST(LIBS_SYSTEM)
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(dirent.h dir.h alloc.h sys/types.h unistd.h ctype.h regex.h)
+
+dnl Checks for libraries.
+AC_CHECK_LIB(gnuregex, re_comp, LIBS_SYSTEM="$LIBS_SYSTEM -lgnuregex")
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_TYPE_SIZE_T
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(strstr stricmp strcasecmp scandir regcomp)
+
+dnl Checks for external packages
+AC_CHECK_HEADER(tv.h ,AN_TV_H="yes" ,
+ AC_CHECK_FILE(/usr/include/tvision/tv.h, TV_INCLUDE="-I /usr/include/tvision" ,
+  AC_CHECK_FILE(/usr/local/include/tvision/tv.h, TV_INCLUDE="-I /usr/local/include/tvision" , AN_TV_H="no")
+ )
+)
+
+AC_SUBST(TV_INCLUDE)
+
+AC_CHECK_LIB(ncurses, stdscr, LIBS_TVISION="$LIBS_TVISION -lncurses")
+AC_CHECK_LIB(gpm, Gpm_Open, LIBS_TVISION="$LIBS_TVISION -lgpm")
+AC_CHECK_LIB(mytinfo, def_prog_mode, LIBS_TVISION="$LIBS_TVISION -lmytinfo")
+AC_CHECK_LIB(stdc++, main, LIBS_TVISION="$LIBS_TVISION -lstdc++")
+AC_CHECK_LIB(tvision, main, LIBS_TVISION="-ltvision $LIBS_TVISION",AC_CHECK_LIB(tvision $LIBS_TVISION, main, LIBS_TVISION="-ltvision $LIBS_TVISION"))
+
+AC_SUBST(LIBS_TVISION)
+
+AC_CHECK_HEADER(qapplication.h , QT_INCLUDE="", AC_CHECK_FILE($QTDIR/include/qapplication.h, QT_INCLUDE="-I $QTDIR/include",))
+
+AC_SUBST(QT_INCLUDE)
+
+AC_CHECK_LIB(qt, main, LIBS_QT="$LIBS_QT -lqt",AC_CHECK_LIB(qt -L $QTDIR/lib, main, LIBS_QT="$LIBS_QT -lqt -L $QTDIR/lib"))
+
+AC_CHECK_LIB(pthread, pthread_create, LIBS_THREAD="$LIBS_THREAD -lpthread",AC_CHECK_LIB(pthreads, pthread_create, LIBS_THREAD="$LIBS_THREAD -lpthreads",AC_CHECK_LIB(c_r, pthread_create, LIBS_THREAD="$LIBS_THREAD -lc_r",AC_CHECK_LIB(gthread, pthread_create, LIBS_THREAD="$LIBS_THREAD -lgthread"))))
+
+AC_CHECK_LIB(qt-mt, main, LIBS_QT_MT="$LIBS_QT_MT -lqt-mt",AC_CHECK_LIB(qt-mt -L $QTDIR/lib $LIBS_THREAD, main, LIBS_QT_MT="$LIBS_QT_MT -lqt-mt -L $QTDIR/lib $LIBS_THREAD"))
+
+AC_SUBST(LIBS_QT)
+
+AC_SUBST(LIBS_QT_MT)
+
+AC_OUTPUT(src/Makefile setup/Makefile mnlib/Makefile src/unix_version.h xsetup/Makefile)

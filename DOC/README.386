@@ -1,0 +1,9 @@
+MNTrack for DOS4GW
+
+1) System requirments
+   DOS4GW version 1.95+
+   386+
+   Also you need MNTrack documentation and help files package
+
+2) This package isn't containing all executables. You must use
+   NodeAdd and nodelist compiler for DOS for example.

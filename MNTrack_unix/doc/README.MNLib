@@ -1,0 +1,2 @@
+ Shared library mnlib. Is comon for all Nicol Morozov software. Is recomended
+to put it in to /usr/local/lib

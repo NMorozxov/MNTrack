@@ -1,0 +1,85 @@
+CXX		= @CXX@
+MOC		= @MOC@
+CFLAGS		= @CFLAGS@
+INCLUDE		= -I. -I.. -I../src @QT_INCLUDE@ -I../mnlib
+LIBS            = @LIBS_SYSTEM@ @LIBS_QT@ -L../mnlib -lmn
+LIBS_MT         = @LIBS_SYSTEM@ @LIBS_QT_MT@ -L../mnlib -lmn
+CFLAGS_ALL	= $(CFLAGS) @CFLAGS_ALL@ @DEFS@ $(INCLUDE)
+
+OBJS		= xsetup.o genopts.o cfg.o pfnames.o logopt.o mesopt.o version.o xsetapp.o paopt.o scopt.o addmai.o dmn.o scr.o
+SRCS		= xsetup.cc genopts.cc cfg.cc pfnames.cc logopt.cc mesopt.cc version.cc xsetapp.cc paopt.cc scopt.cc addmai.cc dmn.cc scr.cc
+
+.cc.o:
+	$(CXX) -c $(CFLAGS_ALL) $<
+
+all: xsetup xsetup_mt
+
+xsetup.moc: xsetup.h
+	$(MOC) xsetup.h > xsetup.moc
+
+dmn.moc: dmn.h
+	$(MOC) dmn.h > dmn.moc
+
+scr.moc: scr.h
+	$(MOC) scr.h > scr.moc
+
+genopts.moc: genopts.h
+	$(MOC) genopts.h > genopts.moc
+
+pfnames.moc: pfnames.h
+	$(MOC) pfnames.h > pfnames.moc
+
+logopt.moc: logopt.h
+	$(MOC) logopt.h > logopt.moc
+
+mesopt.moc: mesopt.h
+	$(MOC) mesopt.h > mesopt.moc
+
+paopt.moc: paopt.h
+	$(MOC) paopt.h > paopt.moc
+
+scopt.moc: scopt.h
+	$(MOC) scopt.h > scopt.moc
+
+xsetapp.moc: xsetapp.h
+	$(MOC) xsetapp.h > xsetapp.moc
+
+addmai.moc: addmai.h
+	$(MOC) addmai.h > addmai.moc
+
+xsetup: $(OBJS)
+	$(CXX) -o xsetup $(OBJS) $(LIBS)
+
+xsetup_mt: $(OBJS)
+	$(CXX) -o xsetup_mt $(OBJS) $(LIBS_MT)
+
+clean:
+	rm -f core *.o xsetup *.moc
+
+distclean: clean
+	rm -f Makefile *~
+	rm -rf .pcomp
+
+pfnames.cc: pfnames.h pfnames.moc
+
+xsetup.cc: xsetup.h xsetup.moc
+
+genopts.cc: genopts.h genopts.moc
+
+logopt.cc: logopt.h logopt.moc
+
+mesopt.cc: mesopt.h mesopt.moc
+
+paopt.cc: paopt.h paopt.moc
+
+scopt.cc: scopt.h scopt.moc
+
+xsetapp.cc: xsetapp.h xsetapp.moc
+
+addmai.cc: addmai.h addmai.moc
+
+dmn.cc: dmn.h dmn.moc
+
+scr.cc: scr.h scr.moc
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
